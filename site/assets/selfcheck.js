@@ -6,8 +6,8 @@
   const VERDICTS = {
     bivalent: {
       title: "Bivalent",
-      text: "However many agents you run, the loop doesn't learn across tasks yet. Start small: one failure class, one stage, one owner. Escapes past code review make a good first slice.",
-      link: ["governance", "How to start, and who owns the loop"],
+      text: "Your answers don't show learning across tasks yet, however many agents you run. Start small: one failure class, one stage, one owner. Escapes past code review make a good first slice.",
+      link: ["start", "How to start small"],
     },
     unproven: {
       title: "Trivalent in shape, not yet in proof",
@@ -25,7 +25,7 @@
       link: ["falsification", "How to test whether it pays"],
     },
   };
-  const PENDING = "Questions 1 and 2 decide whether the system learns at all; 3 and 4 whether anyone can show it, without the loop grading itself; 5 and 6 whether the memory lasts and stays clean.";
+  const PENDING = "Questions 1 and 2 look for learning across tasks; 3 and 4 for checks the loop doesn't grade itself; 5 and 6 for memory that lasts and stays clean. Leave a question open while its outcome is pending.";
 
   document.querySelectorAll("ol[data-selfcheck]").forEach((list, n) => {
     const items = Array.from(list.children);

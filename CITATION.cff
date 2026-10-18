@@ -1,5 +1,5 @@
 cff-version: 1.2.0
-message: "If you refer to DevIntOps, please cite it as below."
+message: "Citation metadata for the DevIntOps paper and its site."
 title: "DevIntOps: source of devintops.org"
 authors:
   - family-names: Chertorogov
@@ -28,7 +28,9 @@ preferred-citation:
   version: "draft"
   url: "https://devintops.org/v1/"
   abstract: >-
-    Many agentic SDLC proposals put an AI agent into every box of the DevOps
+    DevIntOps puts what a software system learns under a contract: what each
+    lesson records, what it may change, how its effect is checked and how it
+    leaves. Many agentic SDLC proposals put an AI agent into every box of the DevOps
     figure-eight. That can make each box faster, but it doesn't by itself carry
     experience from one task to the next. This paper makes learning an
     explicit, persistent and measured third loop next to Development and

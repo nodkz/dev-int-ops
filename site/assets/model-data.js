@@ -44,7 +44,7 @@ window.DEVINTOPS_MODEL = {
       body: "Outcomes from every stage flow in: escaped bugs, incidents, review feedback, rollbacks, cost spikes, checks that never fire, changes that went well. Memory is versioned experience with its sources, kept across tasks and people; judgment weighs the options, including doing nothing, and selects one within the owners' limits. Lessons flow back into each stage's own rules, evals, context and thresholds, with the stage owner's approval, and a named team owns the loop, its memory and its metric.",
       noteLabel: "Beyond failures", note: "A lesson can also make a pattern that worked the default, propose retiring a check that never fires, let a safe gate move faster or send simple work to a cheaper agent. Lessons loosen defaults as well as tighten them.",
       facts: [["Stages", "Understand → Predict → Orchestrate → Learn"], ["Continuous", "Reasoning, Adaptation"], ["Unit of work", "an outcome in, a lesson out"],
-        ["Clock", "per outcome, keeping what it learned in between"], ["Metric", "time to lesson, payoff per lesson (for a failure class, measured by its repeat rate)"],
+        ["Clock", "per goal or outcome, with checks that stay open across tasks and releases"], ["Metric", "time to lesson, payoff per lesson (for a failure class, measured by its repeat rate)"],
         ["Without it", "nothing compounds: every task starts from the same defaults"]],
     },
 
@@ -74,7 +74,7 @@ window.DEVINTOPS_MODEL = {
       summary: "Check the change works before anyone depends on it.",
       body: "Run unit, integration and end-to-end tests, plus evals for anything an AI agent does.",
       facts: [["In", "an artifact"], ["Out", "a verdict with evidence"], ["Watch", "escaped defects, flaky tests"]],
-      noteLabel: "With the third loop", note: "Most escapes point at a missing or weak check. The third loop proposes the test or eval that would have caught it, replays it on the escaped change, and keeps it only if it fires and holds up on other changes. Tests that have never failed and cost minutes on every run get flagged for review: a clean record alone doesn't prove a test is useless.",
+      noteLabel: "With the third loop", note: "An escape often points at a missing or weak check. The third loop proposes the test or eval that would have caught it, replays it on the escaped change, and keeps it only if it fires and holds up on other changes. Tests that have never failed and cost minutes on every run get flagged for review: a clean record alone doesn't prove a test is useless.",
     },
 
     release: {
@@ -125,13 +125,13 @@ window.DEVINTOPS_MODEL = {
       summary: "Send each decision to the stage or agent allowed to act on it.",
       body: "Route the change through that stage's own mechanism and its owner's approval: more context for the coding agent, a review rule, an eval or test, a gate threshold, a slower rollout, a constraint in the spec.",
       facts: [["In", "a selected decision"], ["Out", "a change to one stage's rules, evals or context, or a recorded no-op"], ["Watch", "time to lesson"]],
-      noteLabel: "Example", note: "The rule ships to review as a draft. Once its replay passes, the review owner approves it. Next time's default has changed.",
+      noteLabel: "Example", note: "The rule ships to review as a draft. Once it passes the replay and a run over recent changes, the review owner approves it. Next time's default has changed.",
     },
     learn: {
       kind: "stage", loop: "int", title: "Learn",
       summary: "Compare expected with actual and keep, revise or retract the lesson.",
       body: "Replay first: does the changed stage now handle the original case as intended? Then try it on cases it wasn't written from, run it where it can't block yet, and watch the class for a fixed window against a baseline. One replay never proves a broad improvement. Keep, narrow, decay or retract the lesson, and record why.",
-      facts: [["In", "the lesson and what happened next"], ["Out", "a kept, narrowed or retracted lesson"], ["Watch", "payoff against a baseline, and how often expected effects come true"]],
+      facts: [["In", "the lesson and what happened next"], ["Out", "a kept, narrowed or retracted lesson, or a check still open"], ["Watch", "payoff against a baseline, and how often expected effects come true"]],
       noteLabel: "Example", note: "Replayed on the escaped change, the rule fires. After 60 days it has fired twice, once wrongly, so it gets narrowed.",
     },
 
@@ -169,7 +169,7 @@ window.DEVINTOPS_MODEL = {
       kind: "process", loop: "int", title: "Continuous Adaptation", spans: ["orchestrate", "learn"],
       summary: "Apply lessons through each stage's own mechanisms, then check that they worked.",
       body: "Lessons change rules, evals, context and thresholds with the owner's approval. Each one is replayed, tested beyond its first case, watched for a fixed window, then kept, narrowed, decayed or retracted.",
-      noteLabel: "Limits", note: "People own goals, permissions and boundaries. Context and thresholds within a band can change automatically, blocking rules and policy need a person, and merges never happen on their own. Nothing the loop learns can widen a permission or change how the loop is scored.",
+      noteLabel: "Limits", note: "People own goals, permissions and boundaries. Narrow context and thresholds within a band can change automatically, blocking rules and policy need a person, and merges never happen on their own. Nothing the loop learns can widen a permission or change how the loop is scored.",
     },
   },
 
@@ -177,7 +177,7 @@ window.DEVINTOPS_MODEL = {
     1: { title: "Monovalent: Dev", tagline: "We build it.",
       text: "One loop bonded to the system. Development changes the implementation, and someone else runs it. What production shows reaches the builders late, if at all." },
     2: { title: "Bivalent: DevOps", tagline: "We build it and run it.",
-      text: "Two loops bonded to one system. Monitor feeds back into Plan, and one team owns both loops. Putting an AI agent into every box of this figure-eight makes it faster. Unless something carries lessons across tasks and checks them, it is still bivalent." },
+      text: "Two loops bonded to one system. Monitor feeds back into Plan, and one team owns both loops. Putting an AI agent into every box of this figure-eight can make it faster. Unless something carries lessons across tasks and checks them, it is still bivalent." },
     3: { title: "Trivalent: DevIntOps", tagline: "We build it, run it, and it learns how to decide.",
       text: "Three loops bonded to one system. Outcomes from every stage flow into Understand, and lessons flow back into every stage through that stage's own mechanisms, with its owner's approval." },
   },
@@ -195,7 +195,7 @@ window.DEVINTOPS_MODEL = {
     { parts: ["predict"], valence: 3, title: "Which stage could have caught it?",
       text: "Predict weighs where a bounded change could have caught it most cheaply, changing nothing included, and selects review: a review rule plus an eval, with the expected effect, the risk and the cost." },
     { parts: ["orchestrate", "code"], valence: 3, title: "Change the stage, with its owner",
-      text: "Orchestrate ships the rule to review as a draft, through the review step's own mechanism. Once its replay passes, the review owner approves it. Next time's default has changed." },
+      text: "Orchestrate ships the rule to review as a draft, through the review step's own mechanism. Once it passes the replay and a run over recent changes, the review owner approves it. Next time's default has changed." },
     { parts: ["learn"], valence: 3, title: "Did it work?",
       text: "Replayed on the escaped change, the rule fires, and a run over recent changes counts its false positives. After 60 days it has fired twice, once wrongly, so it gets narrowed. Firings are not avoided escapes: the score is the class's repeat rate against a baseline." },
     { parts: ["system"], valence: 3, title: "One incident, three loops",
