@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DevIntOps: Intelligence as the third continuous loop in software engineering</title>
+<meta name="description" content="DevIntOps adds a third continuous loop to software engineering. Development changes the implementation, Operations changes how it runs, Intelligence changes how it decides. A draft by Pavel Chertorogov.">
+<meta name="author" content="Pavel Chertorogov">
+<link rel="canonical" href="https://devintops.org/">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/style.css">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="DevIntOps">
+<meta property="og:title" content="DevIntOps: from monovalent Dev to bivalent DevOps to trivalent DevIntOps">
+<meta property="og:description" content="Development changes the implementation. Operations changes how it runs. Intelligence changes how it decides. A draft by Pavel Chertorogov.">
+<meta property="og:url" content="https://devintops.org/">
+<meta property="og:image" content="https://devintops.org/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="DevIntOps: three ribbon loops, Development, Operations and Intelligence, around one system.">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "DevIntOps",
+  "url": "https://devintops.org/",
+  "description": "Intelligence as the third continuous loop in software engineering.",
+  "author": { "@type": "Person", "name": "Pavel Chertorogov" },
+  "license": "https://creativecommons.org/licenses/by/4.0/"
+}
+</script>
+</head>
+<body>
+<!--
+THESIS: The model is the hero: the whole diagram and its argument in the first screen, then the visitor takes it apart word by word.
+OWN-WORLD: White paper, ink #0F172A for text, Operations blue #2442C8 for every action (links, buttons, focus), hairline rules, square corners. Loop colors from the approved diagrams: teal #087481, blue #2442C8, violet #5A2CCF. System sans, ribbon diagrams as figures.
+STORY: The visitor reads the three verbs next to the diagram, selects parts or follows one escaped bug through the loops, checks their own system with six questions, then reads the paper or joins the discussion.
+FIRST VIEWPORT: A slim title band (the wordmark beside Read the paper and PDF), then the explorable diagram beside its resting panel: the lead, the three verbs, one incident in three loops, the thesis.
+FORM: Title band, explorer, the key lines (a thesis band with three supporting punchlines), why, valence figure, the model at a glance, self-check, vocabulary (folded), versions and source, discussion. Revised after a three-model design review (Sol, Astra, Opus).
+-->
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="bar">
+    <a class="brand" href="./"><img src="assets/favicon.svg" alt="" width="30" height="30">DevIntOps</a>
+    <nav class="nav" aria-label="Site">
+      <a href="#explore">Model</a>
+      <a href="v1/">Paper<span class="nav-version"> draft</span></a>
+      <a href="v1/devintops-v1-draft.pdf">PDF</a>
+      <a href="#discuss">Discuss</a>
+      <a class="nav-wide" href="https://github.com/nodkz/dev-int-ops">GitHub</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <section class="hero" aria-labelledby="title">
+    <div class="hero-id">
+      <h1 id="title" class="wordmark"><span class="dev">Dev</span><span class="int">Int</span><span class="ops">Ops</span></h1>
+    </div>
+    <div class="actions">
+      <a class="button" href="v1/">Read the paper</a>
+      <a class="button secondary" href="v1/devintops-v1-draft.pdf">PDF</a>
+    </div>
+  </section>
+
+  <section class="explorer explorer-home" id="explore" aria-labelledby="explore-title" data-explorer data-src="assets/model/three-loops.svg">
+    <h2 id="explore-title" class="sr-only">Explore the model</h2>
+    <div class="explorer-body">
+      <figure class="explorer-figure">
+        <div class="explorer-art"><a class="static-figure" href="assets/diagrams/02-three-loops.png"><img src="assets/model/three-loops.svg" width="980" height="918" alt="Three ribbon loops around a dark System hub. Development: Plan, Code, Build and Test, with Continuous Integration and Continuous Delivery and a core of flow and quality. Operations: Release, Deploy, Operate and Monitor, with Continuous Deployment and Continuous Feedback and a core of stability and observability. Intelligence: Understand, Predict, Orchestrate and Learn, with Continuous Reasoning and Continuous Adaptation and a core of memory and judgment."></a></div>
+        <div class="explorer-controls"></div>
+        <figcaption>Three loops around one system: twelve stages and six continuous processes.</figcaption>
+      </figure>
+      <aside class="explorer-panel" aria-label="About the model">
+        <div class="panel-body">
+          <h3 class="panel-title panel-lead" tabindex="-1">Intelligence as the third continuous loop in software engineering.</h3>
+          <ul class="panel-verbs">
+            <li><b class="dev">Development</b> changes the implementation.</li>
+            <li><b class="ops">Operations</b> changes how it runs.</li>
+            <li><b class="int">Intelligence</b> changes how it decides.</li>
+          </ul>
+          <p>One incident, three loops: Operations restores service, Development fixes the bug, and Intelligence changes what catches it next time.</p>
+          <p class="panel-thesis">Agents automate tasks. Intelligence loops improve the system that performs those tasks.</p>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <details class="diagram-text measure">
+    <summary>Diagram text: what each of the twelve stages does</summary>
+    <dl class="stages">
+      <dt class="dev">Plan</dt><dd>Turn goals and evidence into a roadmap and specs.</dd>
+      <dt class="dev">Code</dt><dd>Implement the change, with agents and people in one repo.</dd>
+      <dt class="dev">Build</dt><dd>Turn code into deployable artifacts, automatically.</dd>
+      <dt class="dev">Test</dt><dd>Check the change works before anyone depends on it.</dd>
+      <dt class="ops">Release</dt><dd>Package a tested build into a versioned release, ready to ship.</dd>
+      <dt class="ops">Deploy</dt><dd>Roll out step by step through rings and feature flags.</dd>
+      <dt class="ops">Operate</dt><dd>Keep the system available, scaled and within budget.</dd>
+      <dt class="ops">Monitor</dt><dd>Watch real behavior: telemetry, errors and user signals.</dd>
+      <dt class="int">Understand</dt><dd>Read goals, context and outcomes: what is asked, known and unclear.</dd>
+      <dt class="int">Predict</dt><dd>Weigh options, including no action, and select one within the limits.</dd>
+      <dt class="int">Orchestrate</dt><dd>Send each decision to the stage or agent allowed to act on it.</dd>
+      <dt class="int">Learn</dt><dd>Compare expected with actual and keep, revise or retract the lesson.</dd>
+    </dl>
+  </details>
+
+  <section class="thesis thesis-home" aria-label="The argument in four lines">
+    <div class="thesis-lead">
+      <p class="quiet">We are not just adding AI to the software development lifecycle.</p>
+      <p>We are adding intelligence to the lifecycle of software itself.</p>
+    </div>
+    <ul class="thesis-lines">
+      <li><span class="quiet">A retry loop converges one task.</span> <span>A learning loop makes the next task start better.</span></li>
+      <li><span class="quiet">Every task starts from the same defaults.</span> <span>Without the third loop, nothing compounds.</span></li>
+      <li><span class="quiet">A loop that only ever adds checks</span> <span>has learned to say no, not to decide better.</span></li>
+    </ul>
+  </section>
+
+  <div class="measure">
+    <h2 id="why">Why a third loop</h2>
+    <p>Many agentic SDLC proposals put an AI agent into every box of the DevOps figure-eight. A coding agent writes, a review agent reviews, a test agent validates, and when a check fails the work goes back until it passes. That is useful, and it is still the same loop, only faster. DevOps has always valued feedback and learning; what these diagrams lack is a loop that carries experience into the next task and checks that it helped.</p>
+    <p>That is the third loop. With memory and judgment at its core, it turns outcomes into lessons: an escaped bug becomes a scoped review rule, a rollout pattern with a clean record becomes the default, a check that never fires is proposed for retirement. Each change goes through the stage's own rules, evals or context, with the owner's approval, and stays only while the evidence says it pays off. It is a step toward software that improves itself, while people keep the goals, the permissions and the scoring.</p>
+  </div>
+
+  <figure class="wide">
+    <a href="assets/diagrams/01-valence.png"><img src="assets/diagrams/01-valence.svg" width="1800" height="960" loading="lazy" alt="Diagram titled From monovalent Dev to bivalent DevOps to trivalent DevIntOps. Three panels. Dev: one ribbon loop of Plan, Code, Build and Test attached to a System hub. DevOps: a second loop of Release, Deploy, Operate and Monitor on the other side of the hub. DevIntOps: a third loop of Understand, Predict, Orchestrate and Learn below the hub."></a>
+    <figcaption>Valence, used as a metaphor, counts the continuous loops bonded to one system: one for Dev, two for DevOps, three for DevIntOps.</figcaption>
+  </figure>
+
+  <div class="measure">
+    <p>In chemistry, valence is the number of bonds an atom can form. Two bonds only make chains and rings; branching starts at three. Here it is a metaphor, not a law. Software engineering has added a valence twice already, and each step kept everything before it: DevOps did not remove development, and DevIntOps does not remove DevOps.</p>
+  </div>
+
+  <section class="sheet glance" aria-labelledby="glance">
+    <div class="glance-head">
+      <h2 id="glance">The model at a glance</h2>
+    </div>
+    <table class="ref">
+      <caption class="sr-only">The DevIntOps model at a glance</caption>
+      <thead>
+        <tr>
+          <td></td>
+          <th scope="col" class="dev">Development</th>
+          <th scope="col" class="ops">Operations</th>
+          <th scope="col" class="int">Intelligence<span class="tag">new</span></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">Stages</th>
+          <td class="dev" data-loop="Development">Plan → Code → Build → Test</td>
+          <td class="ops" data-loop="Operations">Release → Deploy → Operate → Monitor</td>
+          <td class="int" data-loop="Intelligence">Understand → Predict → Orchestrate → Learn</td>
+        </tr>
+        <tr>
+          <th scope="row">Continuous processes</th>
+          <td class="dev" data-loop="Development">Integration, Delivery</td>
+          <td class="ops" data-loop="Operations">Deployment, Feedback</td>
+          <td class="int" data-loop="Intelligence">Reasoning, Adaptation</td>
+        </tr>
+        <tr>
+          <th scope="row">Core</th>
+          <td class="dev" data-loop="Development">flow and quality</td>
+          <td class="ops" data-loop="Operations">stability and observability</td>
+          <td class="int" data-loop="Intelligence">memory and judgment</td>
+        </tr>
+        <tr>
+          <th scope="row">Unit of work</th>
+          <td class="dev" data-loop="Development">a change</td>
+          <td class="ops" data-loop="Operations">a release, an incident</td>
+          <td class="int" data-loop="Intelligence">an outcome in, a lesson out</td>
+        </tr>
+        <tr>
+          <th scope="row">Metric</th>
+          <td class="dev" data-loop="Development">lead time, task completion</td>
+          <td class="ops" data-loop="Operations">change failure rate, incident rate, time to restore</td>
+          <td class="int" data-loop="Intelligence">time to lesson, payoff per lesson</td>
+        </tr>
+        <tr>
+          <th scope="row">Without it</th>
+          <td class="dev" data-loop="Development">nothing ships</td>
+          <td class="ops" data-loop="Operations">nothing survives production</td>
+          <td class="int" data-loop="Intelligence">nothing compounds</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="measure" aria-labelledby="self-check">
+    <h2 id="self-check">Is your system trivalent?</h2>
+    <p>Six questions from the paper. Answer them for one team or one system you know well. A yes should point to an example, an owner or an artifact, not a tool name.</p>
+    <ol data-selfcheck data-paper="v1/" id="check">
+      <li>After an escaped bug or an unusually good result, does the loop propose a change to some stage, or record why nothing should change?</li>
+      <li>Does task N+1 avoid task N's mistake, or repeat its success, because the system carried the lesson?</li>
+      <li>Does a named owner, not the loop itself, decide how lessons are judged and what they may change?</li>
+      <li>Does each lesson say what it should change and by when, and do you check that against a baseline, for example the repeat rate per failure class?</li>
+      <li>Do lessons and their evidence live in a versioned store, linked to the decision state they change, not only in people and documents?</li>
+      <li>Do lessons expire unless renewed, and can a wrong one be retracted everywhere it is used?</li>
+    </ol>
+    <div class="actions after-check">
+      <a class="button" href="v1/">Read the paper</a>
+      <a class="button secondary" href="v1/devintops-v1-draft.pdf">PDF</a>
+    </div>
+  </section>
+
+  <section class="measure" aria-labelledby="vocabulary">
+    <h2 id="vocabulary">Vocabulary</h2>
+    <p>How the paper uses these terms.</p>
+    <details class="vocab-more">
+      <summary>Show all 22 terms</summary>
+      <dl class="vocab">
+      <dt id="term-devintops">DevIntOps</dt><dd>Development, Intelligence and Operations: three continuous loops bonded to one system. Int stands for Intelligence.</dd>
+      <dt id="term-intelligence">Intelligence</dt><dd>The third loop: Understand, Predict, Orchestrate, Learn. The word means learning from experience to decide better, not a claim that any model is intelligent.</dd>
+      <dt id="term-valence">Valence</dt><dd>A metaphor: the number of continuous loops bonded to one system, one for Dev, two for DevOps, three for DevIntOps.</dd>
+      <dt id="term-loop">Loop</dt><dd>A continuous cycle with its own unit of work, clock, owner and metric. Development, Operations and Intelligence are the three.</dd>
+      <dt id="term-stage">Stage</dt><dd>One step of a loop, such as Plan, Deploy or Learn. There are twelve, four per loop.</dd>
+      <dt id="term-process">Continuous process</dt><dd>A practice drawn between two neighboring stages, such as Continuous Integration. The label marks its main area of responsibility; the practice itself can span more stages. There are six, two per loop.</dd>
+      <dt id="term-engineering-system">Engineering system</dt><dd>How we build and run software: the repositories, pipelines, agents, people and rules. The paper's main application.</dd>
+      <dt id="term-product-system">Product system</dt><dd>What we build: the running product and the decisions it makes for its users. Its loops have their own owners and memory.</dd>
+      <dt id="term-outcome">Outcome</dt><dd>Anything a decision led to, including a decision not to act: an escaped bug, an incident, a flaky verdict, a review comment accepted or dismissed, a rollback, a cost spike, user feedback, a change that went better than expected.</dd>
+      <dt id="term-outcome-class">Outcome class</dt><dd>A stable, versioned category that people define, so that similar outcomes can be compared over time. A failure class is the most common kind.</dd>
+      <dt id="term-failure-class">Failure class</dt><dd>An outcome class for one kind of failure, such as unchecked optional in retry code. People define and version the classes, not the loop.</dd>
+      <dt id="term-lesson">Lesson</dt><dd>A scoped, versioned bet about a named class of outcomes: usually that a change in some stage will improve it, sometimes that no change is justified. The class can be a failure that should stop coming back, waste to remove, or a result worth repeating. Its record names the trigger and sources, the evidence, the expected effect and its check date, the owner and when it expires. It can be wrong, so it can be retracted.</dd>
+      <dt id="term-decision-state">Decision state</dt><dd>What the stages apply when they make judgment calls: an agent's instructions and context, review rules, gate thresholds, rollout speed, decision policies. It is versioned like any other code or config. Intelligence changes it; memory records why.</dd>
+      <dt id="term-memory">Memory</dt><dd>Versioned, provenance-tracked experience, knowledge, preferences, evidence and policies, within permission scopes. In the engineering application, the lesson records and their evidence; lessons reach the stages as decision state. Not a wiki. If the loop goes down, the stages keep their last lessons, and each lesson carries its own expiry date, so it still expires on time.</dd>
+      <dt id="term-judgment">Judgment</dt><dd>Weighing options and selecting one, including no action, within owner limits.</dd>
+      <dt id="term-owner">Owner</dt><dd>The named team or role that owns a loop, its memory and its learning metric. Stage owners keep a veto over writes to their stage.</dd>
+      <dt id="term-payoff">Payoff</dt><dd>What a lesson changed in its class of outcomes, against a baseline, with its attribution and uncertainty stated: repeats for a failure class, time or compute saved for waste, cycle time for flow, cost per task for spend.</dd>
+      <dt id="term-repeat-rate">Repeat rate</dt><dd>How often a failure class comes back, per comparable exposure, in a fixed window. Against a baseline, it measures the payoff of a lesson about that class.</dd>
+      <dt id="term-time-to-lesson">Time to lesson</dt><dd>From a recorded outcome to a lesson live in the owning stage, at the evidence level its authority needs, or to an explicit decision to change nothing.</dd>
+      <dt id="term-cost-of-learning">Cost of learning</dt><dd>What the loop spends to learn: compute, reviewer time, false positives and dismissed comments, upkeep of the lessons it keeps, and rollbacks when a lesson goes wrong.</dd>
+      <dt id="term-calibration">Calibration</dt><dd>How well the loop's stated confidence matches what happened: of the bets it calls 80% likely, about 80% should come true. A check on confidence, read next to payoff and cost.</dd>
+      <dt id="term-compounding">Compounding</dt><dd>Later work starting from what earlier work taught, instead of learning it again. It lasts only while kept lessons return more than they cost to keep.</dd>
+    </dl>
+    </details>
+  </section>
+
+  <section class="measure" aria-labelledby="versions">
+    <h2 id="versions">Versions and source</h2>
+    <p>The paper <a href="v1/"><cite>From Monovalent Dev to Bivalent DevOps to Trivalent DevIntOps</cite></a> is a draft, dated 18 October 2026. When it becomes version 1.0 it keeps this address; each later version gets its own address and its own row here.</p>
+    <div class="table-scroll">
+      <table class="ledger">
+        <caption class="sr-only">Versions</caption>
+        <thead>
+          <tr><th scope="col">Version</th><th scope="col">Date</th><th scope="col">Address</th><th scope="col">PDF</th></tr>
+        </thead>
+        <tbody>
+          <tr><th scope="row">DRAFT</th><td data-label="Date"><time datetime="2026-10-18">18 October 2026</time></td><td data-label="Address"><a href="v1/">devintops.org/v1/</a></td><td data-label="PDF"><a href="v1/devintops-v1-draft.pdf">PDF</a></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="ledger-meta">Author: Pavel Chertorogov · Source: <a href="https://github.com/nodkz/dev-int-ops">github.com/nodkz/dev-int-ops</a> · License: <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></p>
+  </section>
+
+  <section class="discuss measure no-print" id="discuss" aria-labelledby="discuss-title">
+    <h2 id="discuss-title">Discussion</h2>
+    <p>Questions, objections, counterexamples and reports from teams that try the model are welcome. The thread lives in <a href="https://github.com/nodkz/dev-int-ops/discussions">GitHub Discussions</a> and is shared with the paper's page; sign in with GitHub to post. Found an error in the text? <a href="https://github.com/nodkz/dev-int-ops/issues">Open an issue</a>.</p>
+    <p>To follow new versions, watch or star the <a href="https://github.com/nodkz/dev-int-ops">repository on GitHub</a>.</p>
+    <div class="discuss-box" data-discuss data-term="DevIntOps">
+      <div class="giscus"></div>
+      <p class="discuss-cta"><a class="button secondary" href="https://github.com/nodkz/dev-int-ops/discussions">Read and post on GitHub</a></p>
+      <p class="discuss-note">If the comments don't load, <a href="https://github.com/nodkz/dev-int-ops/discussions">read and post on GitHub</a>.</p>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="bar">
+    <span>© 2026 Pavel Chertorogov. Text and diagrams under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.</span>
+  </div>
+</footer>
+<script src="assets/model-data.js" defer></script>
+<script src="assets/explorer.js" defer></script>
+<script src="assets/selfcheck.js" defer></script>
+<script src="assets/site.js" defer></script>
+<script src="assets/discuss.js" defer></script>
+</body>
+</html>
