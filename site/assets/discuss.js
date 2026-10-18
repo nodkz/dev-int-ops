@@ -3,9 +3,9 @@
 (() => {
   const CONFIG = {
     repo: "nodkz/dev-int-ops",
-    repoId: "",
+    repoId: "R_kgDOVO2E4g",
     category: "Comments",
-    categoryId: "",
+    categoryId: "DIC_kwDOVO2E4s4DI8Wl",
   };
 
   const box = document.querySelector("[data-discuss]");
