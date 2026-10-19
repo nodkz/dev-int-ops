@@ -454,8 +454,9 @@ ol[data-selfcheck] > li { margin: 0.9rem 0; }
    slate runs the full width of the window (the field cancels main's gutters, no 100vw, so no sideways scroll); its
    content keeps to the wide container, split on the explorer's columns. Over the drawing: the wordmark on the
    drawing's left edge, the two sentences at one size, so the second is never read alone (the setup in quiet gray,
-   the claim in white), and the paper's two buttons. Over the panel: the two key lines, stacked behind a pale rule,
-   their text starting where the panel's does below. On slate the loops take the ribbons' light stops (teal 7.5:1,
+   the claim in white), and the paper's two buttons. Over the panel: the two key lines, stacked. The field draws no
+   rules: space alone separates the statement from the key lines and the key lines from each other. Their text starts
+   where the panel's does below. On slate the loops take the ribbons' light stops (teal 7.5:1,
    violet 5.8:1, blue 4.6:1), quiet text #93a0b4 (6.7:1) and #b6bfcc (9.6:1), focus rings #8ea2ff (7.4:1). Under
    960px the key lines move under the statement; under 760px they stack. */
 .hero { display: grid; grid-template-columns: minmax(0, 1.25fr) 2.5rem minmax(0, 1fr); margin: 0 -24px; padding: 0 max(24px, calc(50% - var(--wide) / 2 + 24px)); background: var(--ink); color: #fff; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
@@ -473,10 +474,8 @@ ol[data-selfcheck] > li { margin: 0.9rem 0; }
 .hero .button.secondary { background: transparent; color: #fff; box-shadow: inset 0 0 0 1.5px #5577ff; }
 .hero .button.secondary:hover { background: rgb(85 119 255 / 0.18); color: #fff; }
 .hero a:focus-visible { outline-color: #8ea2ff; }
-.hero-lines { grid-column: 3; display: flex; flex-direction: column; justify-content: center; position: relative; list-style: none; margin: 0; padding: 3.35rem 0; }
-.hero-lines::before { content: ""; position: absolute; left: -1.25rem; top: 3.75rem; bottom: 3.75rem; border-left: 1px solid rgb(255 255 255 / 0.16); }
+.hero-lines { grid-column: 3; display: flex; flex-direction: column; justify-content: center; list-style: none; margin: 0; padding: 3.35rem 0; }
 .hero-lines li { margin: 0; padding: 1.2rem 0; font-size: clamp(1rem, 1.25vw, 1.14rem); line-height: 1.5; text-wrap: pretty; }
-.hero-lines li + li { border-top: 1px solid rgb(255 255 255 / 0.12); }
 .hero-lines li > span { display: block; }
 .hero-lines .quiet { color: #b6bfcc; font-weight: 500; }
 .hero-lines li > span:last-child { color: #fff; font-weight: 750; }
@@ -484,9 +483,7 @@ ol[data-selfcheck] > li { margin: 0.9rem 0; }
 @media (max-width: 960px) {
   .hero { display: block; }
   .hero-main { padding: 3.2rem 0 0; }
-  .hero-lines { display: grid; grid-template-columns: 1fr 1fr; column-gap: 2rem; margin-top: 2.2rem; padding: 0 0 2rem; border-top: 1px solid rgb(255 255 255 / 0.16); }
-  .hero-lines::before { content: none; }
-  .hero-lines li + li { border-top: 0; }
+  .hero-lines { display: grid; grid-template-columns: 1fr 1fr; column-gap: 2rem; margin-top: 2.2rem; padding: 0 0 2rem; }
 }
 @media (max-width: 760px) {
   .hero { margin: 0 -16px; padding: 0 16px; }
@@ -496,7 +493,6 @@ ol[data-selfcheck] > li { margin: 0.9rem 0; }
   .hero .actions { margin-top: 1.5rem; }
   .hero-lines { display: block; margin-top: 1.9rem; padding: 0 0 0.9rem; }
   .hero-lines li { padding: 1rem 0 1.1rem; font-size: 15.5px; }
-  .hero-lines li + li { border-top: 1px solid rgb(255 255 255 / 0.12); }
   .hero + .explorer { margin-top: 1.6rem; }
 }
 /* On paper the field gives way to ink on white, closed by an ink rule, the loops in their own colors. */
@@ -509,9 +505,7 @@ ol[data-selfcheck] > li { margin: 0.9rem 0; }
   .hero .ops { color: var(--ops); }
   .hero-setup, .hero-lines .quiet { color: var(--body); }
   .hero-lines { display: grid; grid-template-columns: 1fr 1fr; column-gap: 1.5rem; margin-top: 0.9rem; padding: 0; border-top: 1px solid var(--rule); }
-  .hero-lines::before { content: none; }
   .hero-lines li { padding: 0.6rem 0 0; }
-  .hero-lines li + li { border-top: 0; }
   .hero .button.secondary { color: var(--action); box-shadow: inset 0 0 0 1.5px var(--action); }
 }
 
