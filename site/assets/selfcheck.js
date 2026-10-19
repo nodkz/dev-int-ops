@@ -5,8 +5,8 @@
   "use strict";
   const VERDICTS = {
     bivalent: {
-      title: "Bivalent",
-      text: "Your answers don't show learning across tasks yet, however many agents you run. Start small: one failure class, one stage, one owner. Escapes past code review make a good first slice.",
+      title: "A gap in learning across tasks",
+      text: "Your answers leave a gap in the path from outcomes to lessons to later tasks, or in its evidence. That doesn't prove there is no loop, or that the system is bivalent. Start small: one failure class, one stage, one owner.",
       link: ["start", "How to start small"],
     },
     unproven: {

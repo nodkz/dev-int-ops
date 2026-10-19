@@ -242,6 +242,12 @@ h2:hover .anchor, h2 .anchor:focus-visible { opacity: 1; }
   h2 { break-after: avoid; margin-top: 1.8em; }
   h3 { break-after: avoid; }
   figure, table, pre, .note, .thesis { break-inside: avoid; }
+  /* Two long tables may break between rows, so they don't leave half a page blank. */
+  .table-scroll.print-split { overflow: visible; }
+  .print-split table { break-inside: auto; }
+  .print-split tr { break-inside: avoid; }
+  .print-split thead { display: table-header-group; }
+  #appendix { break-before: page; margin-top: 0; }
   figure { margin: 1.2rem 0; }
 }
 
@@ -334,6 +340,9 @@ h2:hover .anchor, h2 .anchor:focus-visible { opacity: 1; }
 .panel-verbs b { font-weight: 800; }
 .panel-body .panel-thesis { font-weight: 750; color: var(--ink); }
 .panel-body .panel-cta { margin: 1.2rem 0 0.8rem; }
+/* The other walkthroughs, as links in one sentence under the button. */
+.panel-body .panel-more { margin: 0 0 0.8rem; font-size: 15px; }
+.panel-more .link-button { padding: 0.2rem 0; }
 .panel-hint { font-size: 14.5px; color: var(--muted); }
 .panel-body .panel-meta { margin: 0.3rem 0 0; font-size: 14.5px; color: var(--muted); }
 .panel-body .panel-summary { margin: 0.95rem 0 0.7rem; font-size: 17px; font-weight: 700; color: var(--ink); line-height: 1.45; }
@@ -458,3 +467,6 @@ ol[data-selfcheck] > li { margin: 0.9rem 0; }
   .thesis-lines li { padding: 1rem 0.25rem; }
   .thesis-lines li + li { border-left: 0; border-top: 1px solid var(--hair); }
 }
+
+/* Paper: Figure 3's written-out text and the appendix follow a stage list with a paragraph. */
+.stages + p { margin-top: 1em; }

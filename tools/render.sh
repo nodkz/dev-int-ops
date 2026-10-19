@@ -25,8 +25,20 @@ done
 shot "$ROOT/site/assets/og-image.svg" 1 "$ROOT/site/assets/og-image.png"
 
 # Print from a copy of the paper with every figure loaded eagerly. The figures are SVG, so the PDF keeps them as vectors.
+# Relative links become absolute against the canonical address, so the PDF's links work for every reader; images
+# and styles stay relative, so the copy prints with the local files. In-page links stay internal.
 # The EXIT trap deletes the copy even when Chrome fails, so it never lands in site/.
-sed -e 's/ loading="lazy"//g' "$ROOT/site/v1/index.html" > "$PRINT"
+python3 - "$ROOT/site/v1/index.html" "$PRINT" <<'PY'
+import re, sys
+from urllib.parse import urljoin
+src = open(sys.argv[1], encoding="utf-8").read().replace(' loading="lazy"', "")
+def absolute(m):
+    href = m.group(2)
+    if href.startswith(("#", "//")) or re.match(r"[A-Za-z][A-Za-z0-9+.-]*:", href):
+        return m.group(0)
+    return m.group(1) + urljoin("https://devintops.org/v1/", href) + m.group(3)
+open(sys.argv[2], "w", encoding="utf-8").write(re.sub(r'(<a\b[^>]*?\shref=")([^"]*)(")', absolute, src))
+PY
 "$CHROME" --headless=new --disable-gpu --no-first-run --user-data-dir="$PROFILE" --no-pdf-header-footer \
   --print-to-pdf="$ROOT/site/v1/devintops-v1-draft.pdf" "file://$PRINT" >/dev/null 2>&1
 rm -f "$PRINT"

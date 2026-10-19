@@ -1,7 +1,8 @@
 // devintops.org model explorer. Makes the three-loops diagram explorable: every stage, continuous process,
-// loop and the System hub explains itself on hover, click, tap or keyboard focus, and a walkthrough follows
-// one escaped bug through the loops. Progressive enhancement: the static figure and the panel's resting text
-// work without JavaScript, and print always shows the static figure. Content lives in assets/model-data.js.
+// loop and the System hub explains itself on hover, click, tap or keyboard focus, and walkthroughs follow one
+// lesson each through the loops (M.tours: an escaped bug, a rule that found nothing, a rollout that went well).
+// Progressive enhancement: the static figure and the panel's resting text work without JavaScript, and print
+// always shows the static figure. Content lives in assets/model-data.js.
 (() => {
   "use strict";
   const M = window.DEVINTOPS_MODEL;
@@ -79,7 +80,7 @@
       "</div>";
     root.classList.add("is-live");
 
-    const state = { mode: "intro", pinned: null, preview: null, valence: 3, step: 0, current: "system" };
+    const state = { mode: "intro", pinned: null, preview: null, valence: 3, story: 0, step: 0, current: "system" };
     let clearTimer = 0;
     let hoverTimer = 0;
     let shown = null;
@@ -88,7 +89,10 @@
     let keptFrame = 0;
     const sizes = new Map(); // `${valence}:${key}` → the height a part view takes, from reserve()
 
-    const shownValence = () => (state.mode === "tour" ? M.tour[state.step].valence : state.valence);
+    const steps = () => M.tours[state.story].steps;
+    const storyOf = (key) => M.tours.findIndex((t) => t.key === key);
+    const named = (s) => s.charAt(0).toUpperCase() + s.slice(1);
+    const shownValence = () => (state.mode === "tour" ? steps()[state.step].valence : state.valence);
     const visible = (key) => {
       const loop = loopOf(key);
       return !loop || LEVEL[loop] <= shownValence();
@@ -172,9 +176,13 @@
         </div>`;
     }
 
+    // The first walkthrough is the primary action; the others follow as links in one line under it.
     function introView() {
+      const [first, ...more] = M.tours;
+      const others = more.map((t) => `<button type="button" class="link-button" data-story="${t.key}">${esc(t.name)}</button>`);
       return `${restHTML}
-        <p class="panel-cta"><button type="button" class="button" data-tour-start>Follow one escaped bug</button></p>
+        <p class="panel-cta"><button type="button" class="button" data-tour-start data-story="${first.key}">Follow ${esc(first.name)}</button></p>
+        ${others.length ? `<p class="panel-more">Or follow ${others.join(" or ")}.</p>` : ""}
         <p class="panel-hint">Select any part of the diagram to see what it does. On a keyboard, tab to the diagram and use the arrow keys; Escape comes back here.</p>`;
     }
 
@@ -191,14 +199,22 @@
     }
 
     function tourView() {
-      const step = M.tour[state.step];
-      const last = state.step === M.tour.length - 1;
+      const story = M.tours[state.story];
+      const step = story.steps[state.step];
+      const last = state.step === story.steps.length - 1;
+      const after = M.tours[(state.story + 1) % M.tours.length];
       // Steps 1 to 3 run in a bivalent system; the track shows where DevOps stops and the third loop takes over.
-      const track = M.tour.map((s, i) =>
+      const track = story.steps.map((s, i) =>
         `<span class="${s.valence === 2 ? "is-ops" : "is-int"}${i <= state.step ? " is-reached" : ""}"></span>`).join("");
+      // The last step offers the next walkthrough in the line where the others offer a way out.
+      const exit = !last
+        ? '<p class="panel-exit"><button type="button" class="link-button" data-tour="exit">Leave the walkthrough</button></p>'
+        : after !== story
+          ? `<p class="panel-exit"><button type="button" class="link-button" data-story="${after.key}">Follow ${esc(after.name)}<span aria-hidden="true"> →</span></button></p>`
+          : "";
       return `<div class="panel-main is-tour"><div class="tour-track" aria-hidden="true">${track}</div>
         <h3 class="panel-title" tabindex="-1">${esc(step.title)}</h3>
-        <p class="panel-meta">One escaped bug · step ${state.step + 1} of ${M.tour.length}</p>
+        <p class="panel-meta">${esc(named(story.name))} · step ${state.step + 1} of ${story.steps.length}</p>
         <p class="panel-summary">${esc(step.text)}</p></div>
         <div class="panel-nav">
           <button type="button" class="link-button" data-tour="prev"${state.step === 0 ? " disabled" : ""}><span aria-hidden="true">← </span>Back</button>
@@ -206,7 +222,7 @@
             ? '<button type="button" class="button" data-tour="exit">Explore on your own</button>'
             : '<button type="button" class="button" data-tour="next">Next<span aria-hidden="true"> →</span></button>'}
         </div>
-        ${last ? "" : '<p class="panel-exit"><button type="button" class="link-button" data-tour="exit">Leave the walkthrough</button></p>'}`;
+        ${exit}`;
     }
 
     // Every view the panel can show is rendered once into a hidden copy at the current width. The panel reserves
@@ -228,7 +244,7 @@
       const body = probe.appendChild(document.createElement("div"));
       body.className = "panel-body";
       panel.after(probe);
-      const saved = { mode: state.mode, valence: state.valence, step: state.step };
+      const saved = { mode: state.mode, valence: state.valence, story: state.story, step: state.step };
       const rows = [];
       const take = (kind, html, key) => {
         body.innerHTML = html;
@@ -247,9 +263,12 @@
           for (const key of M.order) if (visible(key)) take("part", partView(key), key);
         }
         state.mode = "tour";
-        for (let i = 0; i < M.tour.length; i++) {
-          state.step = i;
-          take("tour", tourView());
+        for (let s = 0; s < M.tours.length; s++) {
+          state.story = s;
+          for (let i = 0; i < M.tours[s].steps.length; i++) {
+            state.step = i;
+            take("tour", tourView());
+          }
         }
       } finally {
         Object.assign(state, saved);
@@ -317,7 +336,7 @@
       svg.classList.toggle("is-tour", state.mode === "tour");
       let html;
       if (state.mode === "tour") {
-        const step = M.tour[state.step];
+        const step = steps()[state.step];
         paint(step.parts.includes("system") ? null : step.parts, null);
         html = tourView();
       } else if (key) {
@@ -404,19 +423,20 @@
       setHash(null);
     }
 
-    function startTour() {
+    function startTour(index = 0) {
       clearTimeout(hoverTimer);
       state.mode = "tour";
+      state.story = index;
       state.step = 0;
       state.pinned = null;
       state.preview = null;
       render();
       sayStep();
-      setHash("lesson");
+      setHash(M.tours[index].key);
     }
 
     function stepTour(delta) {
-      state.step = Math.max(0, Math.min(M.tour.length - 1, state.step + delta));
+      state.step = Math.max(0, Math.min(steps().length - 1, state.step + delta));
       render();
       sayStep();
     }
@@ -429,8 +449,9 @@
     }
 
     function sayStep() {
-      const s = M.tour[state.step];
-      say(`Step ${state.step + 1} of ${M.tour.length}. ${s.title}. ${s.text}`);
+      const s = steps()[state.step];
+      const story = state.step === 0 ? `${named(M.tours[state.story].name)}. ` : "";
+      say(`${story}Step ${state.step + 1} of ${steps().length}. ${s.title}. ${s.text}`);
     }
 
     // Focus moves with re-rendered panel content, so keyboard users never lose their place.
@@ -529,6 +550,7 @@
       const go = e.target.closest("[data-go]");
       const tour = e.target.closest("[data-tour]");
       const add = e.target.closest("[data-valence-go]");
+      const story = e.target.closest("[data-story]");
       if (go) {
         const nav = go.dataset.nav;
         pin(go.dataset.go);
@@ -540,7 +562,7 @@
         const action = tour.dataset.tour;
         if (action === "next") {
           stepTour(1);
-          refocus(state.step === M.tour.length - 1 ? '[data-tour="exit"]' : '[data-tour="next"]');
+          refocus(state.step === steps().length - 1 ? '[data-tour="exit"]' : '[data-tour="next"]');
         } else if (action === "prev") {
           stepTour(-1);
           refocus(state.step === 0 ? '[data-tour="next"]' : '[data-tour="prev"]');
@@ -551,8 +573,8 @@
       } else if (add) {
         setValence(Number(add.dataset.valenceGo));
         refocus(".panel-title");
-      } else if (e.target.closest("[data-tour-start]")) {
-        startTour();
+      } else if (story) {
+        startTour(Math.max(0, storyOf(story.dataset.story)));
         refocus('[data-tour="next"]');
       } else {
         return;
@@ -563,7 +585,8 @@
     function followHash() {
       const linked = /^#explore\/([a-z]+)$/.exec(location.hash);
       if (!linked) return false;
-      if (linked[1] === "lesson") startTour();
+      const story = storyOf(linked[1]);
+      if (story >= 0) startTour(story);
       else if (M.parts[linked[1]]) pin(linked[1]);
       else return false;
       root.scrollIntoView({ block: "start" });

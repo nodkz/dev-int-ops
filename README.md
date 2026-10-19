@@ -15,7 +15,7 @@ Development changes the implementation. Operations changes how it runs. Intellig
 | `site/v1/devintops-v1-draft.pdf` | PDF of the draft. At version 1.0 it becomes `devintops-v1.0.pdf`, for archives such as Zenodo. |
 | `site/assets/diagrams/` | Diagrams as SVG (used on the pages and in the PDF) and as 2x PNG (download links and the README). |
 | `site/assets/model/three-loops.svg` | The three-loops diagram with every stage, process, loop and the hub addressable, for the model explorer. Generated. |
-| `site/assets/model-data.js` | What every word on the diagram means, the walkthrough and the valence notes. Edit explanations here. |
+| `site/assets/model-data.js` | What every word on the diagram means, the three walkthroughs and the valence notes. Edit explanations here. |
 | `site/assets/explorer.js`, `selfcheck.js`, `discuss.js`, `site.js` | The model explorer, the interactive self-check, the GitHub Discussions comments, and small page behaviors such as opening folded sections for deep links. |
 | `tools/` | `build_diagrams.py` (diagrams and social card), `render.sh` (PNGs and the PDF), `pdf_meta.py` (PDF metadata) and `giscus.py` (the comment widget's GitHub ids). |
 | `CITATION.cff`, `.zenodo.json` | Citation metadata for GitHub's "Cite this repository" and for Zenodo. |
