@@ -453,19 +453,22 @@ ol[data-selfcheck] > li { margin: 0.9rem 0; }
 }
 .after-check { margin-top: 1.6rem; }
 
-/* Landing: the key lines. The thesis band, wide, under the model, with three supporting punchlines (setup quiet, punchline ink). */
-.thesis-home { max-width: var(--wide); }
-.thesis-home .thesis-lead p { max-width: 36ch; font-size: clamp(1.45rem, 2.6vw, 1.75rem); }
-.thesis-lines { list-style: none; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); margin: 1.5rem 0 0; padding: 1.4rem 0 0; border-top: 1px solid var(--rule); }
-.thesis-lines li { margin: 0; padding: 0 1.4rem; font-size: 17px; line-height: 1.45; text-wrap: balance; }
-.thesis-lines li + li { border-left: 1px solid var(--rule); }
-.thesis-lines span { display: block; }
+/* Landing: the key lines, a ledger under the title band and above the model. Each row sets its quiet setup on the
+   explorer's figure column and its ink punchline on the panel column, so the punchlines read down as one argument. */
+.thesis-home { max-width: var(--wide); margin: 0 auto; padding: 0; border-top: 0; text-align: left; }
+.thesis-home .thesis-lead, .thesis-lines li { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); column-gap: 2.5rem; align-items: baseline; }
+.thesis-home .thesis-lead { padding: 1.6rem 0 1.05rem; }
+.thesis-home .thesis-lead p { max-width: 30ch; margin: 0; font-size: clamp(1.3rem, 2.2vw, 1.6rem); line-height: 1.28; }
+.thesis-lines { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--rule); }
+.thesis-lines li { margin: 0; padding: 0.7rem 0; font-size: 18px; line-height: 1.4; text-wrap: balance; }
+.thesis-lines li + li { border-top: 1px solid var(--hair); }
 .thesis-lines .quiet { color: var(--body); font-weight: 500; }
 .thesis-lines span:last-child { color: var(--ink); font-weight: 750; }
 @media (max-width: 760px) {
-  .thesis-lines { grid-template-columns: 1fr; padding-top: 0; }
-  .thesis-lines li { padding: 1rem 0.25rem; }
-  .thesis-lines li + li { border-left: 0; border-top: 1px solid var(--hair); }
+  .thesis-home .thesis-lead, .thesis-lines li { grid-template-columns: 1fr; }
+  .thesis-home .thesis-lead { padding: 1.4rem 0 0.9rem; }
+  .thesis-home .thesis-lead p { font-size: 1.3rem; }
+  .thesis-lines li { font-size: 16px; }
 }
 
 /* Paper: Figure 3's written-out text and the appendix follow a stage list with a paragraph. */
