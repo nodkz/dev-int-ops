@@ -16,7 +16,7 @@
     },
     fragile: {
       title: "Trivalent, with fragile memory",
-      text: "Lessons live in people and documents, or wrong and stale ones can't be taken back. Keep them in a versioned store with their evidence, linked to the rules and settings they change. Give each one an expiry date, so stale lessons leave unless someone renews them, and make sure a wrong one can be retracted everywhere.",
+      text: "Good lessons can be lost, and wrong or stale ones can stay. Keep lessons in a versioned store with their evidence, linked to the decision state they change. Give each one an expiry date, so stale lessons leave unless someone renews them, and make sure a wrong one can be retracted everywhere.",
       link: ["governance", "Owner, memory and limits"],
     },
     trivalent: {

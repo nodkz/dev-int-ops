@@ -34,12 +34,12 @@ python3 -m http.server --directory site 8000
 ./tools/render.sh
 ```
 
-It needs Python 3 and Google Chrome (set `CHROME=/path/to/chrome` elsewhere). The script rebuilds the SVGs (including the explorer's `site/assets/model/three-loops.svg`), renders them to PNG, renders the 1200×630 social card and prints `site/v1/index.html` to the PDF.
+It needs Python 3 and Google Chrome (if Chrome is installed elsewhere, set `CHROME=/path/to/chrome`). The script rebuilds the SVGs (including the explorer's `site/assets/model/three-loops.svg`), renders them to PNG, renders the 1200×630 social card and prints `site/v1/index.html` to the PDF.
 
 ## Hosting
 
 - GitHub Pages deploys `site/` with `.github/workflows/pages.yml` on every push to `main`. The custom domain is `devintops.org`, with HTTPS enforced; `www` redirects to it.
-- DNS is on Cloudflare. The `A` and `AAAA` records for `devintops.org` point to GitHub Pages (`185.199.108.153` to `185.199.111.153`, and `2606:50c0:8000::153` to `2606:50c0:8003::153`) and `www` is a `CNAME` to `nodkz.github.io`. Keep every one of them **DNS only** (grey cloud): through the Cloudflare proxy, GitHub can't renew its certificate and browsers cache old files for hours.
+- DNS is on Cloudflare. The `A` and `AAAA` records for `devintops.org` point to GitHub Pages (`185.199.108.153` to `185.199.111.153`, and `2606:50c0:8000::153` to `2606:50c0:8003::153`) and `www` is a `CNAME` to `nodkz.github.io`. Keep every one of them **DNS only** (gray cloud): through the Cloudflare proxy, GitHub can't renew its certificate and browsers cache old files for hours.
 - After a deploy, GitHub's cache serves the new files within about 10 minutes.
 - Still to do: verify `devintops.org` for the `nodkz` account (GitHub Settings → Pages → Add a verified domain, then the TXT record it shows, in Cloudflare), so no other account can claim the domain for its Pages site.
 
