@@ -450,53 +450,66 @@ ol[data-selfcheck] > li { margin: 0.9rem 0; }
 }
 .after-check { margin-top: 1.6rem; }
 
-/* Landing: the title band and the key lines as one field of the System hub's slate, edge to edge under the header,
-   its text on the wide column: the wordmark beside the paper's two buttons over a pale rule, the quiet setup, the
-   claim at headline scale, then the two key lines on the explorer's columns, so the second starts where the panel's
-   text does below. On slate the loops take the ribbons' light stops (teal 7.5:1, violet 5.8:1, blue 4.6:1), quiet
-   text #b6bfcc (9.6:1), focus rings #8ea2ff (7.4:1). */
-.hero { margin: 0 -24px; padding: 0 24px; background: var(--ink); color: #fff; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
-.hero-in { max-width: var(--wide); margin: 0 auto; padding-top: 2.7rem; }
-.hero-top { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 1rem 2rem; margin-bottom: 2.3rem; padding-bottom: 2.1rem; border-bottom: 1px solid rgb(255 255 255 / 0.16); }
+/* Landing: the title band and the key lines as one field of the System hub's slate in the wide container, split on
+   the explorer's columns. Over the drawing: the wordmark, the two sentences at one size, so the second is never read
+   alone (the setup in quiet gray, the claim in white), and the paper's two buttons. Over the panel: the two key lines,
+   stacked behind a pale rule, their text starting where the panel's does below. On slate the loops take the ribbons'
+   light stops (teal 7.5:1, violet 5.8:1, blue 4.6:1), quiet text #93a0b4 (6.7:1) and #b6bfcc (9.6:1), focus rings
+   #8ea2ff (7.4:1). Under 960px the key lines move under the statement; under 760px they stack. */
+.hero { display: grid; grid-template-columns: minmax(0, 1.25fr) 2.5rem minmax(0, 1fr); max-width: var(--wide); margin: 1.4rem auto 0; background: var(--ink); color: #fff; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+.hero-main { grid-column: 1; padding: 2.6rem 0 2.8rem 3.3rem; }
 .hero .wordmark { color: #fff; }
 .hero .dev { color: #2eb8c4; }
 .hero .int { color: #a57bff; }
 .hero .ops { color: #5577ff; }
 .hero b { font-weight: inherit; }
 .hero b.int { white-space: nowrap; }
+.hero-setup, .hero-head { max-width: none; margin: 0; font-size: clamp(1.45rem, 2.4vw, 2.05rem); line-height: 1.12; letter-spacing: -0.026em; text-wrap: balance; }
+.hero-setup { margin-top: 2rem; color: #93a0b4; font-weight: 600; }
+.hero-head { margin-top: 0.4rem; color: #fff; font-weight: 800; }
+.hero .actions { margin-top: 2rem; }
 .hero .button.secondary { background: transparent; color: #fff; box-shadow: inset 0 0 0 1.5px #5577ff; }
 .hero .button.secondary:hover { background: rgb(85 119 255 / 0.18); color: #fff; }
 .hero a:focus-visible { outline-color: #8ea2ff; }
-.hero-setup { max-width: 56ch; margin: 0; color: #b6bfcc; font-size: clamp(1.1rem, 1.55vw, 1.36rem); line-height: 1.4; font-weight: 500; letter-spacing: -0.005em; text-wrap: balance; }
-.hero-head { max-width: 26ch; margin: 0.95rem 0 0; color: #fff; font-size: clamp(2rem, 4.2vw, 3.4rem); line-height: 1.04; font-weight: 800; letter-spacing: -0.033em; text-wrap: balance; }
-.hero-lines { list-style: none; display: grid; grid-template-columns: minmax(0, 1.25fr) 2.5rem minmax(0, 1fr); margin: 2.7rem 0 0; padding: 0; border-top: 1px solid rgb(255 255 255 / 0.16); }
-.hero-lines li { margin: 0; padding: 1.45rem 0 1.65rem; font-size: clamp(1rem, 1.25vw, 1.14rem); line-height: 1.5; text-wrap: pretty; }
-.hero-lines li:last-child { grid-column: 3; }
+.hero-lines { grid-column: 3; display: flex; flex-direction: column; justify-content: center; position: relative; list-style: none; margin: 0; padding: 2.2rem 3.3rem 2.2rem 0; }
+.hero-lines::before { content: ""; position: absolute; left: -1.25rem; top: 2.6rem; bottom: 2.6rem; border-left: 1px solid rgb(255 255 255 / 0.16); }
+.hero-lines li { margin: 0; padding: 1.2rem 0; font-size: clamp(1rem, 1.25vw, 1.14rem); line-height: 1.5; text-wrap: pretty; }
+.hero-lines li + li { border-top: 1px solid rgb(255 255 255 / 0.12); }
+.hero-lines li > span { display: block; }
 .hero-lines .quiet { color: #b6bfcc; font-weight: 500; }
-.hero-lines span:last-child { display: inline-block; color: #fff; font-weight: 750; }
+.hero-lines li > span:last-child { color: #fff; font-weight: 750; }
 .hero + .explorer { margin-top: 2.2rem; }
+@media (max-width: 960px) {
+  .hero { display: block; }
+  .hero-main { padding: 2.4rem 2.4rem 0; }
+  .hero-lines { display: grid; grid-template-columns: 1fr 1fr; column-gap: 2rem; margin-top: 2.2rem; padding: 0 2.4rem; border-top: 1px solid rgb(255 255 255 / 0.16); }
+  .hero-lines::before { content: none; }
+  .hero-lines li + li { border-top: 0; }
+}
 @media (max-width: 760px) {
-  .hero { margin: 0 -16px; padding: 0 16px; }
-  .hero-in { padding-top: 1.8rem; }
-  .hero-top { margin-bottom: 1.6rem; padding-bottom: 1.5rem; }
-  .hero-top .actions { width: 100%; }
-  .hero-setup { font-size: 1.05rem; line-height: 1.42; }
-  .hero-head { margin-top: 0.75rem; font-size: clamp(1.7rem, 7.4vw, 2.05rem); line-height: 1.07; }
-  .hero-lines { display: block; margin-top: 2rem; }
-  .hero-lines li { padding: 1.1rem 0 1.2rem; font-size: 15.5px; }
+  .hero { margin-top: 1rem; }
+  .hero-main { padding: 1.9rem 1.25rem 0; }
+  .hero-setup, .hero-head { font-size: 1.42rem; line-height: 1.12; }
+  .hero-setup { margin-top: 1.5rem; }
+  .hero .actions { margin-top: 1.5rem; }
+  .hero-lines { display: block; margin-top: 1.9rem; padding: 0; }
+  .hero-lines li { padding: 1rem 1.25rem 1.1rem; font-size: 15.5px; }
   .hero-lines li + li { border-top: 1px solid rgb(255 255 255 / 0.12); }
   .hero + .explorer { margin-top: 1.6rem; }
 }
 /* On paper the field gives way to ink on white, closed by an ink rule, the loops in their own colors. */
 @media print {
-  .hero { margin: 0; padding: 0 0 0.6rem; background: none; color: var(--ink); border-bottom: 1.5px solid var(--ink); }
-  .hero-in { padding-top: 0; }
-  .hero .wordmark, .hero-head, .hero-lines span:last-child { color: var(--ink); }
+  .hero { display: block; margin: 0; padding: 0 0 0.6rem; background: none; color: var(--ink); border-bottom: 1.5px solid var(--ink); }
+  .hero-main { padding: 0; }
+  .hero .wordmark, .hero-head, .hero-lines li > span:last-child { color: var(--ink); }
   .hero .dev { color: var(--dev); }
   .hero .int { color: var(--int); }
   .hero .ops { color: var(--ops); }
   .hero-setup, .hero-lines .quiet { color: var(--body); }
-  .hero-top, .hero-lines { border-color: var(--rule); }
+  .hero-lines { display: grid; grid-template-columns: 1fr 1fr; column-gap: 1.5rem; margin-top: 0.9rem; padding: 0; border-top: 1px solid var(--rule); }
+  .hero-lines::before { content: none; }
+  .hero-lines li { padding: 0.6rem 0 0; }
+  .hero-lines li + li { border-top: 0; }
   .hero .button.secondary { color: var(--action); box-shadow: inset 0 0 0 1.5px var(--action); }
 }
 
