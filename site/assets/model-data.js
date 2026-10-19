@@ -20,7 +20,7 @@ window.DEVINTOPS_MODEL = {
       summary: "The one system all three loops act on.",
       body: "In the engineering application it is how we build and run software: the repositories, pipelines, agents, people and rules. Put the product in the middle instead and the same pattern applies, with its own owners and memory: the product changes how it decides without waiting for a release.",
       facts: [["Development", "changes its implementation"], ["Operations", "changes how it runs"], ["Intelligence", "changes how it decides"]],
-      noteLabel: "Valence", note: "A metaphor: count the continuous loops bonded to the system, one for Dev, two for DevOps, three for DevIntOps. Switch valence above the diagram to see each step.",
+      noteLabel: "Valence", note: "A metaphor: count the continuous loops bonded to the system, one for Dev, two for DevOps, three for DevIntOps. Switch valence below the diagram to see each step.",
     },
 
     dev: {
@@ -192,7 +192,7 @@ window.DEVINTOPS_MODEL = {
       { parts: ["monitor"], valence: 2, title: "Production notices",
         text: "The retry path finally runs and errors spike. Monitor raises an alert." },
       { parts: ["operate", "code"], valence: 2, title: "DevOps closes the incident",
-        text: "On call rolls back and restores service, and Development fixes the bug. In a bivalent system the story often ends here, with a postmortem and a follow-up ticket." },
+        text: "On-call rolls back and restores service, and Development fixes the bug. In a bivalent system the story often ends here, with a postmortem and a follow-up ticket." },
       { parts: ["understand"], valence: 3, title: "The outcome enters the third loop",
         text: "Understand reads the diff, the review thread and the incident timeline, and files the escape under a failure class: unchecked optional in retry code." },
       { parts: ["predict"], valence: 3, title: "Which stage could have caught it?",

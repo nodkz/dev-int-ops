@@ -396,7 +396,7 @@ def bonds():
                    f'stroke="{LOOPS["int"]["dark"]}" stroke-width="3"/>')
         out.append(f'<circle cx="{x:.1f}" cy="{sy0 - sw / 2 - 2}" r="5" fill="{LOOPS["int"]["dark"]}"/>')
     ribbon_segments(defs, out, loop, spans, ["int"] * 4, STAGES["int"], sw, sw * 0.42, "S", 15)
-    out.append(text((sx0 + sx1) / 2, sy0 + rc + 7, "Intelligence · memory & judgment", 19, 800, LOOPS["int"]["text"], "middle"))
+    out.append(text((sx0 + sx1) / 2, sy0 + rc + 7, "Intelligence · memory and judgment", 19, 800, LOOPS["int"]["text"], "middle"))
     out.append(text(860, 782, "Every stage also bonds to a shared memory.", 20, 400, BODY))
     out.append(text(860, 814, "Lessons reach the stage that needs them.", 20, 800, INK))
     out.append(verbs(w / 2, 876, 19, full=False))
