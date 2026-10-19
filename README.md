@@ -6,6 +6,19 @@ Development changes the implementation. Operations changes how it runs. Intellig
 
 ![Three loops around one system](site/assets/diagrams/02-three-loops.png)
 
+## Reconstruction candidate
+
+This branch contains a full reconstruction of the paper for review. The working
+HTML and PDF are under `site/v1/`; they are not a published update. The new text
+follows the path from experience to decision state, a lesson's life, independent
+authority and measured value, rather than retaining the published section layout.
+
+**Publication decision required before merge:** either revise `/v1/` in place,
+recording the change in its history and updating its immutability promise, or
+publish a new version at its own address with its own PDF, version-list entry and
+matching citation metadata, leaving the published `/v1/` intact. No choice
+between these routes has been made.
+
 ## What's here
 
 | Path | What |
