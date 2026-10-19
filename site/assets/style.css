@@ -453,35 +453,42 @@ ol[data-selfcheck] > li { margin: 0.9rem 0; }
 }
 .after-check { margin-top: 1.6rem; }
 
-/* Landing: the key lines, a slate slab in the System hub's ink under the title band and above the model. The lead
-   pair one headline step up, then the two lines as a ledger whose punchlines line up with the panel's text below.
-   Loop names take the ribbons' light violet, the violet that reads on slate (5.8:1); setups take #b6bfcc (9.6:1). */
-.thesis-home { max-width: var(--wide); margin: 1.4rem auto 0; padding: 1.9rem 2.4rem 1.2rem; border: 0; background: var(--ink); text-align: left; }
+/* Landing: the key lines as a comparison under the title band and above the model. The setups stand in a light
+   DevOps column, the punchlines in a DevIntOps column of the System hub's slate, split on the explorer's columns so
+   the punchlines line up with the panel's text below; subgrid keeps each setup level with its punchline. On slate
+   the loops take the ribbons' light stops (teal 7.5:1, violet 5.9:1, blue 4.7:1). Phones stack DevOps over DevIntOps. */
+.thesis-home { display: grid; grid-template-columns: minmax(0, 1.25fr) 2.5rem minmax(0, 1fr); max-width: var(--wide); margin: 1.4rem auto 0; padding: 0; border: 0; text-align: left; }
+.thesis-col { display: grid; grid-row: span 4; grid-template-rows: subgrid; }
+.thesis-was { grid-column: 1; padding: 0 1.6rem; background: var(--soft); }
+.thesis-now { grid-column: 2 / 4; padding: 0 1.6rem 0 2.5rem; background: var(--ink); -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+.thesis-home p { max-width: none; margin: 0; padding: 0.85rem 0 0.95rem; font-size: clamp(1.02rem, 1.4vw, 1.22rem); line-height: 1.38; text-wrap: balance; }
+.thesis-was p { color: var(--body); font-weight: 500; box-shadow: inset 0 1px 0 var(--rule); }
+.thesis-now p { color: #fff; font-weight: 750; box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.16); }
 .thesis-home b { font-weight: inherit; }
-.thesis-home .int { color: #a57bff; }
-.thesis-home .thesis-lead { padding: 0 0 1.25rem; }
-.thesis-home .thesis-lead p { max-width: none; margin: 0; color: #fff; font-size: clamp(1.55rem, 2.75vw, 2.15rem); line-height: 1.15; letter-spacing: -0.02em; }
-.thesis-home .thesis-lead p.quiet { margin-bottom: 0.4rem; color: #b6bfcc; font-size: clamp(1.15rem, 1.9vw, 1.5rem); line-height: 1.35; letter-spacing: -0.01em; }
-.thesis-lines { list-style: none; margin: 0; padding: 0; border-top: 1px solid rgb(255 255 255 / 0.18); }
-.thesis-lines li { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); column-gap: 2.5rem; align-items: baseline; margin: 0; padding: 0.8rem 0; font-size: clamp(1.02rem, 1.4vw, 1.25rem); line-height: 1.38; text-wrap: balance; }
-.thesis-lines li + li { border-top: 1px solid rgb(255 255 255 / 0.12); }
-.thesis-lines .quiet { color: #b6bfcc; font-weight: 500; }
-.thesis-lines span:last-child { color: #fff; font-weight: 750; }
+.thesis-now .int { color: #a57bff; white-space: nowrap; }
+.thesis-home .thesis-label { padding: 1.1rem 0 0.15rem; font-size: 17px; font-weight: 800; line-height: 1.2; letter-spacing: -0.01em; box-shadow: none; }
+.thesis-now .thesis-label .dev { color: #2eb8c4; }
+.thesis-now .thesis-label .ops { color: #5577ff; }
+.thesis-home .thesis-claim { padding: 0.5rem 0 1.2rem; font-size: clamp(1.35rem, 2.3vw, 1.85rem); line-height: 1.2; letter-spacing: -0.02em; box-shadow: none; }
+.thesis-now .thesis-claim { font-weight: 800; }
 @media (max-width: 760px) {
-  .thesis-home { margin-top: 0.9rem; padding: 1.15rem 1rem 0.5rem; }
-  .thesis-home .thesis-lead { padding-bottom: 0.95rem; }
-  .thesis-home .thesis-lead p { font-size: 1.45rem; line-height: 1.13; }
-  .thesis-home .thesis-lead p.quiet { margin-bottom: 0.3rem; font-size: 1.08rem; }
-  .thesis-lines li { grid-template-columns: 1fr; padding: 0.65rem 0; font-size: 16px; line-height: 1.36; }
+  .thesis-home { display: block; margin-top: 0.9rem; }
+  .thesis-col { display: block; padding: 0.8rem 1rem 0.85rem; }
+  .thesis-home p { padding: 0; font-size: 15.5px; line-height: 1.36; box-shadow: none; }
+  .thesis-home p + p { margin-top: 0.4rem; }
+  .thesis-home .thesis-label { padding: 0; font-size: 15px; }
+  .thesis-home .thesis-claim { margin-top: 0.25rem; padding: 0 0 0.1rem; font-size: 1.1rem; line-height: 1.24; letter-spacing: -0.012em; }
+  .thesis-now .thesis-claim { font-size: 1.24rem; line-height: 1.16; }
 }
-/* On paper the slab gives way to ink on white between two ink rules, like the paper's thesis band. */
+/* On paper both columns print as ink on white between two ink rules, the loops in their own colors. */
 @media print {
-  .thesis-home { margin-top: 1.2rem; padding: 1rem 0 0.4rem; background: none; border-top: 1.5px solid var(--ink); border-bottom: 1.5px solid var(--ink); }
-  .thesis-home .thesis-lead p, .thesis-lines span:last-child { color: var(--ink); }
-  .thesis-home .thesis-lead p.quiet, .thesis-lines .quiet { color: var(--body); }
-  .thesis-home .int { color: var(--int); }
-  .thesis-lines { border-top-color: var(--rule); }
-  .thesis-lines li + li { border-top-color: var(--hair); }
+  .thesis-home { margin-top: 1.2rem; border-top: 1.5px solid var(--ink); border-bottom: 1.5px solid var(--ink); }
+  .thesis-was, .thesis-now { background: none; }
+  .thesis-now p { color: var(--ink); box-shadow: inset 0 1px 0 var(--rule); }
+  .thesis-now .int { color: var(--int); }
+  .thesis-now .thesis-label .dev { color: var(--dev); }
+  .thesis-now .thesis-label .ops { color: var(--ops); }
+  .thesis-home .thesis-label, .thesis-home .thesis-claim { box-shadow: none; }
 }
 
 /* Paper: Figure 3's written-out text and the appendix follow a stage list with a paragraph. */
