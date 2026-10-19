@@ -33,11 +33,11 @@
 </head>
 <body>
 <!--
-THESIS: The argument, then the model: the key lines as a comparison under the wordmark, DevOps on light paper against DevIntOps on the System hub's slate, then the diagram, still the hero of the first screen, which the visitor takes apart word by word.
+THESIS: The argument, then the model: one slate field edge to edge under the header carries the wordmark, the paper's two buttons and the claim, "We are adding a loop that makes the software itself learn.", then the diagram, still the hero of the first screen, which the visitor takes apart word by word.
 OWN-WORLD: White paper, ink #0F172A for text, Operations blue #2442C8 for every action (links, buttons, focus), hairline rules, square corners. Loop colors from the approved diagrams: teal #087481, blue #2442C8, violet #5A2CCF. System sans, ribbon diagrams as figures.
 STORY: The visitor reads the key lines, then the three verbs next to the diagram, selects parts or follows one lesson through the loops (an escaped bug, a rule that found nothing, a rollout that went well), checks their own system with six questions, then reads the paper or joins the discussion.
-FIRST VIEWPORT: A slim title band (the wordmark beside Read the paper and PDF), the key lines as two columns on the explorer's grid (DevOps: the setups on Soft Sheet; DevIntOps: the punchlines in white on slate, the loop names in the ribbons' light stops; phones stack DevOps over DevIntOps), then the explorable diagram beside its resting panel: the lead, the three verbs, one incident in three loops, the thesis. At 1440 by 900 the hub and both upper loops are in view; on a phone, the hub.
-FORM: Title band, the key lines (the lead pair and two supporting pairs as a DevOps and DevIntOps comparison), explorer, why, valence figure, the model at a glance, self-check, vocabulary (folded), versions and source, discussion. Revised after a three-model design review (Sol, Astra, Opus); the key lines moved above the explorer at the author's request.
+FIRST VIEWPORT: The title band and the key lines as one field of the System hub's slate, edge to edge, its text on the wide column: the wordmark (loops in the ribbons' light stops) beside Read the paper and PDF over a pale rule; the setup quiet; the claim in white at headline scale; the two key lines on the explorer's columns. Then the explorable diagram beside its resting panel: the lead, the three verbs, one incident in three loops, the thesis. At 1440 by 900 the hub and both upper loops are in view; on a phone, the hub.
+FORM: The slate field (title band and key lines), explorer, why, valence figure, the model at a glance, self-check, vocabulary (folded), versions and source, discussion. Revised after a three-model design review (Sol, Astra, Opus); the key lines moved above the explorer and joined the title band at the author's request.
 -->
 <a class="skip" href="#main">Skip to content</a>
 <header class="site-header">
@@ -55,27 +55,20 @@ FORM: Title band, the key lines (the lead pair and two supporting pairs as a Dev
 
 <main id="main">
   <section class="hero" aria-labelledby="title">
-    <div class="hero-id">
-      <h1 id="title" class="wordmark"><span class="dev">Dev</span><span class="int">Int</span><span class="ops">Ops</span></h1>
-    </div>
-    <div class="actions">
-      <a class="button" href="v1/">Read the paper</a>
-      <a class="button secondary" href="v1/devintops-v1.0.pdf">PDF</a>
-    </div>
-  </section>
-
-  <section class="thesis thesis-home" aria-label="The argument in three lines">
-    <div class="thesis-col thesis-was">
-      <p class="thesis-label"><span class="dev">Dev</span><span class="ops">Ops</span></p>
-      <p class="thesis-claim">We are not just adding AI to the software development lifecycle.</p>
-      <p>A retry loop converges one task.</p>
-      <p>Every task starts from the same defaults.</p>
-    </div>
-    <div class="thesis-col thesis-now">
-      <p class="thesis-label"><span class="dev">Dev</span><span class="int">Int</span><span class="ops">Ops</span></p>
-      <p class="thesis-claim">We are adding <b class="int">intelligence</b> to the lifecycle of software itself.</p>
-      <p>A <b class="int">learning loop</b> makes the next task start better.</p>
-      <p>Without the <b class="int">third loop</b>, nothing compounds.</p>
+    <div class="hero-in">
+      <div class="hero-top">
+        <h1 id="title" class="wordmark"><span class="dev">Dev</span><span class="int">Int</span><span class="ops">Ops</span></h1>
+        <div class="actions">
+          <a class="button" href="v1/">Read the paper</a>
+          <a class="button secondary" href="v1/devintops-v1.0.pdf">PDF</a>
+        </div>
+      </div>
+      <p class="hero-setup">We are not just adding AI to the software development lifecycle.</p>
+      <p class="hero-head">We are adding a loop that makes the software itself learn.</p>
+      <ul class="hero-lines">
+        <li><span class="quiet">A retry loop converges one task.</span> <span>A <b class="int">learning loop</b> makes the next task start better.</span></li>
+        <li><span class="quiet">Every task starts from the same defaults.</span> <span>Without the <b class="int">third loop</b>, nothing compounds.</span></li>
+      </ul>
     </div>
   </section>
 
