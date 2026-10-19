@@ -40,6 +40,6 @@ def absolute(m):
 open(sys.argv[2], "w", encoding="utf-8").write(re.sub(r'(<a\b[^>]*?\shref=")([^"]*)(")', absolute, src))
 PY
 "$CHROME" --headless=new --disable-gpu --no-first-run --user-data-dir="$PROFILE" --no-pdf-header-footer \
-  --print-to-pdf="$ROOT/site/v1/devintops-v1-draft.pdf" "file://$PRINT" >/dev/null 2>&1
+  --print-to-pdf="$ROOT/site/v1/devintops-v1.0.pdf" "file://$PRINT" >/dev/null 2>&1
 rm -f "$PRINT"
-python3 "$ROOT/tools/pdf_meta.py" "$ROOT/site/v1/devintops-v1-draft.pdf"
+python3 "$ROOT/tools/pdf_meta.py" "$ROOT/site/v1/devintops-v1.0.pdf"

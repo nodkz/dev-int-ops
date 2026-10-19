@@ -1,6 +1,6 @@
 # DevIntOps
 
-Source of [devintops.org](https://devintops.org): the paper *From Monovalent Dev to Bivalent DevOps to Trivalent DevIntOps: Intelligence as the Third Continuous Loop in Software Engineering*, currently a draft.
+Source of [devintops.org](https://devintops.org): the paper *From Monovalent Dev to Bivalent DevOps to Trivalent DevIntOps: Intelligence as the Third Continuous Loop in Software Engineering*, version 1.0.
 
 Development changes the implementation. Operations changes how it runs. Intelligence changes how it decides.
 
@@ -11,8 +11,8 @@ Development changes the implementation. Operations changes how it runs. Intellig
 | Path | What |
 |---|---|
 | `site/` | The published site. Plain HTML and CSS plus a few small vanilla scripts; no build step, no webfonts. Every page reads in full without JavaScript. |
-| `site/v1/` | The paper, currently a draft. Once it is version 1.0 it is frozen; later versions get new URLs. |
-| `site/v1/devintops-v1-draft.pdf` | PDF of the draft. At version 1.0 it becomes `devintops-v1.0.pdf`, for archives such as Zenodo. |
+| `site/v1/` | The paper, version 1.0. It is frozen; later versions get new URLs. |
+| `site/v1/devintops-v1.0.pdf` | PDF of version 1.0, for archives such as Zenodo. |
 | `site/assets/diagrams/` | Diagrams as SVG (used on the pages and in the PDF) and as 2x PNG (download links and the README). |
 | `site/assets/model/three-loops.svg` | The three-loops diagram with every stage, process, loop and the hub addressable, for the model explorer. Generated. |
 | `site/assets/model-data.js` | What every word on the diagram means, the three walkthroughs and the valence notes. Edit explanations here. |
@@ -50,17 +50,18 @@ The paper and the home page show one shared thread through [giscus](https://gisc
 - giscus finds the thread by a hidden `sha1` marker in its body (strict mapping). Comment on the site or reply in #1. A discussion opened by hand won't show on the site.
 - `tools/giscus.py` writes the repository and category ids into `site/assets/discuss.js`. Run it again only if the repository or the category changes.
 
-## Releasing version 1.0
+## Finishing the 1.0 release
 
-1. Replace the DRAFT labels: paper byline, nav, version note, version history, home page ledger, page titles, JSON-LD, `CITATION.cff`, `.zenodo.json`, `tools/pdf_meta.py` and the social card in `tools/build_diagrams.py`. Point `tools/render.sh` and the links at `devintops-v1.0.pdf`, set the release date wherever it appears (the pages, `CITATION.cff`, `.zenodo.json`, `sitemap.xml`), and rerun `tools/render.sh`.
-2. Tag the release, for example `v1.0.0`. With the Zenodo GitHub integration switched on, Zenodo archives it and mints a DOI from `.zenodo.json`.
-3. Put the DOI in the citation meta tags of `site/v1/index.html` and in `CITATION.cff`, and add a DOI column to the version table on the home page.
-4. Save `https://devintops.org/v1/` and the PDF in the Wayback Machine: <https://web.archive.org/save>.
-5. When you share it elsewhere, link `https://devintops.org/v1/`, and set that as the canonical link on any republished copy, such as Medium.
+Version 1.0 was released on 19 October 2026: its labels, the PDF's name and the release date are in place on the pages, in `CITATION.cff`, `.zenodo.json`, `sitemap.xml`, `tools/pdf_meta.py` and the social card. Still to do:
+
+1. Tag the release, for example `v1.0.0`. With the Zenodo GitHub integration switched on, Zenodo archives it and mints a DOI from `.zenodo.json`.
+2. Put the DOI in the citation meta tags of `site/v1/index.html` and in `CITATION.cff`, and add a DOI column to the version table on the home page.
+3. Save `https://devintops.org/v1/` and the PDF in the Wayback Machine: <https://web.archive.org/save>.
+4. When you share it elsewhere, link `https://devintops.org/v1/`, and set that as the canonical link on any republished copy, such as Medium.
 
 ## Versioning
 
-- `/v1/` holds the draft until version 1.0. From then on it stays as published: typos can be fixed; the meaning doesn't change.
+- `/v1/` holds version 1.0, which replaced the draft there on 19 October 2026. It stays as published: typos can be fixed; the meaning doesn't change.
 - A substantive revision becomes `/v1.1/` or `/v2/`, with an entry in the version history and a new Zenodo version.
 - The home page always points to the latest version.
 

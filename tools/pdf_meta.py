@@ -8,7 +8,7 @@ META = {
     "Title": "From Monovalent Dev to Bivalent DevOps to Trivalent DevIntOps: "
              "Intelligence as the Third Continuous Loop in Software Engineering",
     "Author": "Pavel Chertorogov",
-    "Subject": "DevIntOps, DRAFT. Canonical version: https://devintops.org/v1/",
+    "Subject": "DevIntOps, version 1.0. Canonical version: https://devintops.org/v1/",
     "Keywords": "DevIntOps; DevOps; software engineering; AI agents; continuous learning; engineering systems; self-improving systems",
 }
 # No /Creator on purpose: macOS Spotlight shows /Creator as the author when one is present.

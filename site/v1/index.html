@@ -3,29 +3,29 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>From Monovalent Dev to Bivalent DevOps to Trivalent DevIntOps (DRAFT)</title>
-<meta name="description" content="Draft. Intelligence as a third continuous loop next to Development and Operations, with a contract for what a software system learns. By Pavel Chertorogov.">
+<title>From Monovalent Dev to Bivalent DevOps to Trivalent DevIntOps (v1.0)</title>
+<meta name="description" content="Intelligence as a third continuous loop next to Development and Operations, with a contract for what a software system learns. Version 1.0, by Pavel Chertorogov.">
 <meta name="author" content="Pavel Chertorogov">
 <link rel="canonical" href="https://devintops.org/v1/">
 <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="../assets/style.css">
 <meta name="citation_title" content="From Monovalent Dev to Bivalent DevOps to Trivalent DevIntOps: Intelligence as the Third Continuous Loop in Software Engineering">
 <meta name="citation_author" content="Chertorogov, Pavel">
-<meta name="citation_publication_date" content="2026/10/18">
+<meta name="citation_publication_date" content="2026/10/19">
 <meta name="citation_language" content="en">
 <meta name="citation_abstract_html_url" content="https://devintops.org/v1/">
-<meta name="citation_pdf_url" content="https://devintops.org/v1/devintops-v1-draft.pdf">
+<meta name="citation_pdf_url" content="https://devintops.org/v1/devintops-v1.0.pdf">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="DevIntOps">
 <meta property="og:title" content="From Monovalent Dev to Bivalent DevOps to Trivalent DevIntOps">
-<meta property="og:description" content="Intelligence as the third continuous loop in software engineering. Draft.">
+<meta property="og:description" content="Intelligence as the third continuous loop in software engineering. Version 1.0.">
 <meta property="og:url" content="https://devintops.org/v1/">
 <meta property="og:image" content="https://devintops.org/assets/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="DevIntOps: three ribbon loops, Development, Operations and Intelligence, around one system.">
 <meta property="article:author" content="Pavel Chertorogov">
-<meta property="article:modified_time" content="2026-10-18">
+<meta property="article:modified_time" content="2026-10-19">
 <meta name="twitter:card" content="summary_large_image">
 <script type="application/ld+json">
 {
@@ -35,8 +35,9 @@
   "alternativeHeadline": "Intelligence as the third continuous loop in software engineering",
   "author": { "@type": "Person", "name": "Pavel Chertorogov" },
   "dateCreated": "2026-10-18",
-  "version": "draft",
-  "creativeWorkStatus": "Draft",
+  "datePublished": "2026-10-19",
+  "version": "1.0",
+  "creativeWorkStatus": "Published",
   "inLanguage": "en",
   "url": "https://devintops.org/v1/",
   "image": "https://devintops.org/assets/og-image.png",
@@ -53,8 +54,8 @@
     <a class="brand" href="../"><img src="../assets/favicon.svg" alt="" width="30" height="30">DevIntOps</a>
     <nav class="nav" aria-label="Site">
       <a href="../#explore">Model</a>
-      <a href="./" aria-current="page">Paper<span class="nav-version"> draft</span></a>
-      <a href="devintops-v1-draft.pdf">PDF</a>
+      <a href="./" aria-current="page">Paper<span class="nav-version"> v1.0</span></a>
+      <a href="devintops-v1.0.pdf">PDF</a>
       <a href="#discuss">Discuss</a>
       <a class="nav-wide" href="https://github.com/nodkz/dev-int-ops">GitHub</a>
     </nav>
@@ -67,12 +68,12 @@
   <header class="article-head">
     <h1>From Monovalent Dev to Bivalent DevOps to Trivalent DevIntOps</h1>
     <p class="lead">Intelligence as the third continuous loop in software engineering</p>
-    <p class="byline">Pavel Chertorogov · DRAFT · <time datetime="2026-10-18">18 October 2026</time></p>
+    <p class="byline">Pavel Chertorogov · Version 1.0 · <time datetime="2026-10-19">19 October 2026</time></p>
     <p class="print-only byline">Canonical version: https://devintops.org/v1/ · License: CC BY 4.0</p>
-    <p class="status no-print"><a href="devintops-v1-draft.pdf">Download the PDF</a><a href="#discuss">Discuss on GitHub</a></p>
+    <p class="status no-print"><a href="devintops-v1.0.pdf">Download the PDF</a><a href="#discuss">Discuss on GitHub</a></p>
   </header>
 
-  <p class="version-note">This is a draft, open for comments. It will change before version 1.0, which keeps this address. See the <a href="#history">version history</a>.</p>
+  <p class="version-note">This is version 1.0, open for comments. It stays at this address as published: typos may be fixed, but the meaning won't change. Later versions get their own address. See the <a href="#history">version history</a>.</p>
 
   <h2 id="abstract">Abstract<a class="anchor" href="#abstract" aria-label="Link to this section">#</a></h2>
   <p>DevIntOps gives a software system's learned decision state a contract: what each lesson records, what it may change, how its effect is checked and how it leaves. Many agentic SDLC proposals put an AI agent into every box of the DevOps figure-eight. That can make each box faster, but it doesn't, by itself, carry experience from one task to the next. DevOps has long valued learning; this paper makes it an explicit, persistent and measured third loop next to Development and Operations. Intelligence, with the stages Understand, Predict, Orchestrate and Learn and with memory and judgment at its core, turns outcomes into lessons that change how each stage decides. The same pattern serves the engineering system and the decisions a product makes for its users. It is a step toward self-improving software systems, with a bound: people keep the goals, the permissions and the scoring. A chemistry metaphor frames the shift: monovalent Dev, bivalent DevOps, trivalent DevIntOps. The paper also says what result would show that the loop doesn't pay.</p>
@@ -374,7 +375,7 @@
     <li><strong>Taxonomy drift.</strong> Class definitions change, for good reasons and bad ones. Version the taxonomy and measure each lesson against the version it was written for, or the series breaks without anyone noticing.</li>
     <li><strong>Counterfactuals.</strong> Only the chosen option is ever observed. Payoff needs a baseline for that reason, and so does any claim that another option would have done better: a random slice of work without the lesson, or a replay where the choice doesn't change what happens next. Without one, report what happened, not what was avoided.</li>
   </ul>
-  <p>A before-and-after chart shows that something changed, not that the lesson changed it. Prefer a matched baseline or a controlled rollout to a before-and-after anecdote. When neither is possible, say so, and treat the payoff as a hypothesis, not a result. Report per class, so an average over all lessons can't hide one that made things worse <a class="cite" href="#ref-abe">[7]</a>. This draft defines these metrics and reports none: there is no deployment data behind it yet, and the numbers in its examples are illustrations.</p>
+  <p>A before-and-after chart shows that something changed, not that the lesson changed it. Prefer a matched baseline or a controlled rollout to a before-and-after anecdote. When neither is possible, say so, and treat the payoff as a hypothesis, not a result. Report per class, so an average over all lessons can't hide one that made things worse <a class="cite" href="#ref-abe">[7]</a>. This version defines these metrics and reports none: there is no deployment data behind it yet, and the numbers in its examples are illustrations.</p>
   <p>If a class keeps coming back at its old rate after a lesson, and nobody can say why, the system didn't learn, however fast it shipped. And a loop that only ever adds checks has learned to say no, not to decide better.</p>
 
   <h2 id="governance">Owner, memory and limits<a class="anchor" href="#governance" aria-label="Link to this section">#</a></h2>
@@ -752,7 +753,7 @@
   <table class="record">
     <caption class="sr-only">Version history</caption>
     <tbody>
-      <tr><th scope="row">DRAFT</th><td><time datetime="2026-10-18">18 October 2026</time>. Working draft, open for comments.</td></tr>
+      <tr><th scope="row">1.0</th><td><time datetime="2026-10-19">19 October 2026</time>. First version, after a draft dated 18 October 2026.</td></tr>
     </tbody>
   </table>
 

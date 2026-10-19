@@ -856,7 +856,7 @@ def og_card():
     out.append(text(72, 274, "to trivalent DevIntOps", 30, 700, INK))
     out.append(text(72, 334, "Intelligence as the third continuous loop", 25, 400, BODY))
     out.append(text(72, 368, "in software engineering.", 25, 400, BODY))
-    out.append(text(72, 424, "Pavel Chertorogov  ·  DRAFT  ·  18 October 2026", 18, 600, MUTED))
+    out.append(text(72, 424, "Pavel Chertorogov  ·  Version 1.0  ·  19 October 2026", 18, 600, MUTED))
     out.append(rich(72, 492, [("Dev", LOOPS["dev"]["text"], 800), (" changes the implementation", BODY, 400)], 20, "start"))
     out.append(rich(72, 524, [("Ops", LOOPS["ops"]["text"], 800), (" changes how it runs", BODY, 400)], 20, "start"))
     out.append(rich(72, 556, [("Int", LOOPS["int"]["text"], 800), (" changes how it decides", BODY, 400)], 20, "start"))

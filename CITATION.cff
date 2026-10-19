@@ -4,8 +4,8 @@ title: "DevIntOps: source of devintops.org"
 authors:
   - family-names: Chertorogov
     given-names: Pavel
-version: "draft"
-date-released: "2026-10-18"
+version: "1.0"
+date-released: "2026-10-19"
 url: "https://devintops.org/"
 repository-code: "https://github.com/nodkz/dev-int-ops"
 license: CC-BY-4.0
@@ -25,7 +25,7 @@ preferred-citation:
       given-names: Pavel
   year: 2026
   month: 10
-  version: "draft"
+  version: "1.0"
   url: "https://devintops.org/v1/"
   abstract: >-
     DevIntOps gives a software system's learned decision state a contract: what
