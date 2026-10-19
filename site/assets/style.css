@@ -453,22 +453,35 @@ ol[data-selfcheck] > li { margin: 0.9rem 0; }
 }
 .after-check { margin-top: 1.6rem; }
 
-/* Landing: the key lines, a ledger under the title band and above the model. Each row sets its quiet setup on the
-   explorer's figure column and its ink punchline on the panel column, so the punchlines read down as one argument. */
-.thesis-home { max-width: var(--wide); margin: 0 auto; padding: 0; border-top: 0; text-align: left; }
-.thesis-home .thesis-lead, .thesis-lines li { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); column-gap: 2.5rem; align-items: baseline; }
-.thesis-home .thesis-lead { padding: 1.6rem 0 1.05rem; }
-.thesis-home .thesis-lead p { max-width: 30ch; margin: 0; font-size: clamp(1.3rem, 2.2vw, 1.6rem); line-height: 1.28; }
-.thesis-lines { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--rule); }
-.thesis-lines li { margin: 0; padding: 0.7rem 0; font-size: 18px; line-height: 1.4; text-wrap: balance; }
-.thesis-lines li + li { border-top: 1px solid var(--hair); }
-.thesis-lines .quiet { color: var(--body); font-weight: 500; }
-.thesis-lines span:last-child { color: var(--ink); font-weight: 750; }
+/* Landing: the key lines, a slate slab in the System hub's ink under the title band and above the model. The lead
+   pair one headline step up, then the two lines as a ledger whose punchlines line up with the panel's text below.
+   Loop names take the ribbons' light violet, the violet that reads on slate (5.8:1); setups take #b6bfcc (9.6:1). */
+.thesis-home { max-width: var(--wide); margin: 1.4rem auto 0; padding: 1.9rem 2.4rem 1.2rem; border: 0; background: var(--ink); text-align: left; }
+.thesis-home b { font-weight: inherit; }
+.thesis-home .int { color: #a57bff; }
+.thesis-home .thesis-lead { padding: 0 0 1.25rem; }
+.thesis-home .thesis-lead p { max-width: none; margin: 0; color: #fff; font-size: clamp(1.55rem, 2.75vw, 2.15rem); line-height: 1.15; letter-spacing: -0.02em; }
+.thesis-home .thesis-lead p.quiet { margin-bottom: 0.4rem; color: #b6bfcc; font-size: clamp(1.15rem, 1.9vw, 1.5rem); line-height: 1.35; letter-spacing: -0.01em; }
+.thesis-lines { list-style: none; margin: 0; padding: 0; border-top: 1px solid rgb(255 255 255 / 0.18); }
+.thesis-lines li { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); column-gap: 2.5rem; align-items: baseline; margin: 0; padding: 0.8rem 0; font-size: clamp(1.02rem, 1.4vw, 1.25rem); line-height: 1.38; text-wrap: balance; }
+.thesis-lines li + li { border-top: 1px solid rgb(255 255 255 / 0.12); }
+.thesis-lines .quiet { color: #b6bfcc; font-weight: 500; }
+.thesis-lines span:last-child { color: #fff; font-weight: 750; }
 @media (max-width: 760px) {
-  .thesis-home .thesis-lead, .thesis-lines li { grid-template-columns: 1fr; }
-  .thesis-home .thesis-lead { padding: 1.4rem 0 0.9rem; }
-  .thesis-home .thesis-lead p { font-size: 1.3rem; }
-  .thesis-lines li { font-size: 16px; }
+  .thesis-home { margin-top: 0.9rem; padding: 1.15rem 1rem 0.5rem; }
+  .thesis-home .thesis-lead { padding-bottom: 0.95rem; }
+  .thesis-home .thesis-lead p { font-size: 1.45rem; line-height: 1.13; }
+  .thesis-home .thesis-lead p.quiet { margin-bottom: 0.3rem; font-size: 1.08rem; }
+  .thesis-lines li { grid-template-columns: 1fr; padding: 0.65rem 0; font-size: 16px; line-height: 1.36; }
+}
+/* On paper the slab gives way to ink on white between two ink rules, like the paper's thesis band. */
+@media print {
+  .thesis-home { margin-top: 1.2rem; padding: 1rem 0 0.4rem; background: none; border-top: 1.5px solid var(--ink); border-bottom: 1.5px solid var(--ink); }
+  .thesis-home .thesis-lead p, .thesis-lines span:last-child { color: var(--ink); }
+  .thesis-home .thesis-lead p.quiet, .thesis-lines .quiet { color: var(--body); }
+  .thesis-home .int { color: var(--int); }
+  .thesis-lines { border-top-color: var(--rule); }
+  .thesis-lines li + li { border-top-color: var(--hair); }
 }
 
 /* Paper: Figure 3's written-out text and the appendix follow a stage list with a paragraph. */
